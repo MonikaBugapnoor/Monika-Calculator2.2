@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="A modern scientific calculator with trigonometry, logarithms, powers, constants, memory, and calculation history.">
+  <title>Scientific Calculator</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Scientific Calculator home">
+        <span class="brand-mark">ƒx</span>
+        <span><strong>Scientific</strong><small>CALCULATOR</small></span>
+      </a>
+      <div class="top-actions">
+        <button id="angleMode" class="pill" title="Switch angle mode">DEG</button>
+        <button id="themeToggle" class="icon-button" aria-label="Toggle theme" title="Toggle light/dark theme">☼</button>
+      </div>
+    </header>
+
+    <section class="calculator" aria-label="Scientific calculator">
+      <div class="display">
+        <div class="display-meta"><span id="memoryIndicator">MEMORY EMPTY</span><span id="status">READY</span></div>
+        <div id="expression" class="expression" aria-live="polite"></div>
+        <div id="result" class="result" aria-live="polite">0</div>
+        <div class="display-bottom">
+          <button id="copyResult" class="text-button" title="Copy result">▢ Copy</button>
+          <button id="clearHistory" class="text-button" title="Clear history">Clear history ↗</button>
+        </div>
+      </div>
+
+      <div class="utility-row">
+        <button data-action="memory-clear">MC</button>
+        <button data-action="memory-recall">MR</button>
+        <button data-action="memory-add">M+</button>
+        <button data-action="memory-subtract">M−</button>
+        <button data-action="memory-store">MS</button>
+      </div>
+
+      <div class="keypad" id="keypad">
+        <button class="key function" data-insert="(">(</button>
+        <button class="key function" data-insert=")">)</button>
+        <button class="key function" data-action="percent">%</button>
+        <button class="key danger" data-action="backspace">⌫</button>
+        <button class="key danger" data-action="clear">AC</button>
+
+        <button class="key function" data-insert="sin(">sin</button>
+        <button class="key function" data-insert="cos(">cos</button>
+        <button class="key function" data-insert="tan(">tan</button>
+        <button class="key function" data-insert="sqrt(">√</button>
+        <button class="key operator" data-insert="÷">÷</button>
+
+        <button class="key function" data-insert="asin(">sin⁻¹</button>
+        <button class="key function" data-insert="acos(">cos⁻¹</button>
+        <button class="key function" data-insert="atan(">tan⁻¹</button>
+        <button class="key function" data-insert="^2">x²</button>
+        <button class="key operator" data-insert="×">×</button>
+
+        <button class="key function" data-insert="log(">log</button>
+        <button class="key function" data-insert="ln(">ln</button>
+        <button class="key function" data-insert="^">xʸ</button>
+        <button class="key function" data-insert="!">n!</button>
+        <button class="key operator" data-insert="−">−</button>
+
+        <button class="key function" data-insert="π">π</button>
+        <button class="key function" data-insert="e">e</button>
+        <button class="key function" data-insert="Ans">Ans</button>
+        <button class="key number" data-insert="7">7</button>
+        <button class="key operator" data-insert="+">+</button>
+
+        <button class="key number" data-insert="8">8</button>
+        <button class="key number" data-insert="9">9</button>
+        <button class="key number" data-insert="4">4</button>
+        <button class="key number" data-insert="5">5</button>
+        <button class="key number" data-insert="6">6</button>
+
+        <button class="key number" data-insert="1">1</button>
+        <button class="key number" data-insert="2">2</button>
+        <button class="key number" data-insert="3">3</button>
+        <button class="key number" data-insert="0">0</button>
+        <button class="key number" data-insert=".">.</button>
+
+        <button class="key function" data-insert="10^(">10ˣ</button>
+        <button class="key function" data-insert="abs(">abs</button>
+        <button class="key function" data-insert="1/(">1/x</button>
+        <button class="key number" data-action="sign">±</button>
+        <button class="key equals" data-action="equals">=</button>
+      </div>
+      <p class="keyboard-hint">Keyboard: numbers and operators · Enter = calculate · Esc = clear · Backspace = delete</p>
+    </section>
+
+    <aside class="history-panel">
+      <div class="history-heading"><div><span class="eyebrow">YOUR WORKSPACE</span><h2>Recent calculations</h2></div><span class="history-count" id="historyCount">0</span></div>
+      <div id="historyList" class="history-list"><div class="empty-history"><span>↗</span><p>Your calculations will appear here.</p><small>Run a calculation to get started.</small></div></div>
+      <div class="history-footer">Results stay in this browser session.</div>
+    </aside>
+    <footer>Built for quick, clear calculations <span>•</span> No data sent to a server</footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/script.js"></script>
+</body>
+</html>

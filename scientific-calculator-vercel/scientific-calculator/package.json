@@ -1,0 +1,9 @@
+{
+  "name": "scientific-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A responsive scientific calculator ready to deploy on Vercel.",
+  "scripts": {
+    "start": "npx serve ."
+  }
+}
